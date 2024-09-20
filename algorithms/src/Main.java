@@ -9,9 +9,11 @@ public class Main {
     public static void main(String[] args) {
         // Array initialization
         int[] data = new int[20];
+        int[] ogData = new int[20];
         for(int i=0; i<data.length; i++){
             data[i] = (int) (Math.random() * 11);
         }
+        ogData = data.clone();
 
         // Element to be found
         int toBeFound = 8;
@@ -41,8 +43,8 @@ public class Main {
         // Insertion Sort
         Sort is = new Sort();
         System.out.println("\nInsertion Sort\n\nData:");
-        printArr(data);
-        sorted = is.insertionSort(data);
+        printArr(ogData);
+        sorted = is.insertionSort(ogData);
         System.out.println("Sorted:");
         printArr(sorted);
 
