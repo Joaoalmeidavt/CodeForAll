@@ -59,5 +59,26 @@ public class Main {
         } else {
             System.out.println("Element found at index " + index);
         }
+
+        // Factorial
+        int n = 4;
+        Recursive fac = new Recursive();
+        int fact = fac.factorial(n);
+        System.out.println("\nFactorial of " + n + " is " + fact);
+
+        // Palindrome
+        String word = "ANA";
+        Recursive pal = new Recursive();
+        if(pal.isPalindrome(word)){
+            System.out.println(word + " is a palindrome.");
+        } else {
+            System.out.println(word + " is not a palindrome.");
+        }
+        word = "NOT";
+        if(pal.isPalindrome(word)){
+            System.out.println(word + " is a palindrome.");
+        } else {
+            System.out.println(word + " is not a palindrome.");
+        }
     }
 }
