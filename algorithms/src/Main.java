@@ -17,6 +17,23 @@ public class Main {
         return arr;
     }
 
+    // Selection Sort
+    public static int[] selectionSort(int[] arr) {
+        for(int i = 0; i < arr.length; i++) {
+            int min = arr[i];
+            int place = i;
+            for(int j = i; j < arr.length; j++) {
+                if(arr[j] < min) {
+                    min = arr[j];
+                    place = j;
+                }
+            }
+            arr[place] = arr[i];
+            arr[i] = min;
+        }
+        return arr;
+    }
+
     // Linear Search
     public static int linearSearch(int[] arr, int target) {
         for(int i=0; i<arr.length; i++) {
@@ -63,8 +80,15 @@ public class Main {
             System.out.println("\nElement found at index " + index);
         }
 
+        // Selection Sort
+        int[] sorted = selectionSort(data);
+        for(int i=0; i<sorted.length; i++){
+            System.out.print(sorted[i] + " ");
+        }
+        System.out.println("");
+
         // Insertion Sort
-        int[] sorted = insertionSort(data);
+        sorted = insertionSort(data);
         for(int i=0; i<sorted.length; i++){
             System.out.print(sorted[i] + " ");
         }
