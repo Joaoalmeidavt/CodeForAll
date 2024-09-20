@@ -1,64 +1,9 @@
 public class Main {
-    // Insertion Sort
-    public static int[] insertionSort(int[] arr) {
-        for (int i = 1; i < arr.length; i++) {
-            int key = arr[i];  // The element we want to insert
-            int j = i - 1;
-
-            // Move elements of arr[0..i-1] that are greater than the key
-            // to one position ahead of their current position
-            while (j >= 0 && arr[j] > key) {
-                arr[j + 1] = arr[j];
-                j--;
-            }
-            // Insert the key in its correct position
-            arr[j + 1] = key;
+    public static void printArr(int[] arr){
+        for(int element : arr){
+            System.out.print(element + " ");
         }
-        return arr;
-    }
-
-    // Selection Sort
-    public static int[] selectionSort(int[] arr) {
-        for(int i = 0; i < arr.length; i++) {
-            int min = arr[i];
-            int place = i;
-            for(int j = i; j < arr.length; j++) {
-                if(arr[j] < min) {
-                    min = arr[j];
-                    place = j;
-                }
-            }
-            arr[place] = arr[i];
-            arr[i] = min;
-        }
-        return arr;
-    }
-
-    // Linear Search
-    public static int linearSearch(int[] arr, int target) {
-        for(int i=0; i<arr.length; i++) {
-            if(arr[i] == target){
-                return i;
-            }
-        }
-       return -1;
-    }
-
-    // Binary Search
-    public static int binarySearch(int[] arr, int target) {
-        int left = 0;
-        int right = arr.length - 1;
-        while (left <= right) {
-            int mid = left + (right - left) / 2;
-            if(arr[mid] == target) {
-                return mid;
-            } else if (arr[mid] < target) {
-                left = mid + 1;
-            } else {
-                right = mid - 1;
-            }
-        }
-        return -1;
+        System.out.println("");
     }
 
     public static void main(String[] args) {
@@ -66,39 +11,51 @@ public class Main {
         int[] data = new int[20];
         for(int i=0; i<data.length; i++){
             data[i] = (int) (Math.random() * 11);
-            System.out.print(data[i] + " ");
         }
 
         // Element to be found
         int toBeFound = 8;
 
         // Linear Search
-        int index = linearSearch(data, toBeFound);
+        Search ls = new Search();
+        System.out.println("Linear Search\n");
+        System.out.print("Data: ");
+        printArr(data);
+
+        System.out.println("Value: " + toBeFound);
+        int index = ls.linearSearch(data, toBeFound);
         if(index == -1){
-            System.out.println("\nElement not found");
+            System.out.println("Element not found");
         } else {
-            System.out.println("\nElement found at index " + index);
+            System.out.println("Element found at index " + index);
         }
 
         // Selection Sort
-        int[] sorted = selectionSort(data);
-        for(int i=0; i<sorted.length; i++){
-            System.out.print(sorted[i] + " ");
-        }
-        System.out.println("");
+        Sort ss = new Sort();
+        System.out.println("\nSelection Sort\n\nData:");
+        printArr(data);
+        System.out.println("Sorted:");
+        int[] sorted = ss.selectionSort(data);
+        printArr(sorted);
 
         // Insertion Sort
-        sorted = insertionSort(data);
-        for(int i=0; i<sorted.length; i++){
-            System.out.print(sorted[i] + " ");
-        }
+        Sort is = new Sort();
+        System.out.println("\nInsertion Sort\n\nData:");
+        printArr(data);
+        sorted = is.insertionSort(data);
+        System.out.println("Sorted:");
+        printArr(sorted);
 
         // Binary Search
-        index = binarySearch(data, toBeFound);
+        Search bs = new Search();
+        System.out.println("\nBinary Search");
+        System.out.println("Data: ");
+        printArr(data);
+        index = bs.binarySearch(data, toBeFound);
         if(index == -1){
-            System.out.println("\nElement not found");
+            System.out.println("Element not found");
         } else {
-            System.out.println("\nElement found at index " + index);
+            System.out.println("Element found at index " + index);
         }
     }
 }
