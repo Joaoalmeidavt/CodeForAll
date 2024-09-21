@@ -74,5 +74,12 @@ public class Main {
         } else {
             System.out.println(word + " is not a palindrome.");
         }
+
+        // Binary Trees
+        BinaryTree tree = new BinaryTree();
+        tree.node = 0;
+        tree.addNode(tree, 1);
+        tree.addNode(tree, 2);
+        tree.printTree();
     }
 }
