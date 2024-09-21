@@ -76,10 +76,18 @@ public class Main {
         }
 
         // Binary Trees
+        System.out.println("\nBinary Trees");
         BinaryTree tree = new BinaryTree();
-        tree.node = 0;
-        tree.addNode(tree, 1);
-        tree.addNode(tree, 2);
-        tree.printTree();
+        tree.root = new Node(0); // Initialize the root node
+        tree.addNode(tree.root, 1);
+        tree.addNode(tree.root, 2);
+        tree.addNode(tree.root, 3);
+        tree.addNode(tree.root, 4);
+
+        System.out.print("BFS: ");
+        tree.BFS(tree.root); // Pass the root node
+        System.out.println("");
+        System.out.print("DFS: ");
+        tree.DFS(tree.root); // Pass the root node
     }
 }
