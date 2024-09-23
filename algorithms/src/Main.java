@@ -49,18 +49,7 @@ public class Main {
         System.out.println("\nBinary Search");
         System.out.println("Data: ");
         printArr(data);
-        index = Search.binarySearch(data, toBeFound);
-        if(index == -1){
-            System.out.println("Element not found");
-        } else {
-            System.out.println("Element found at index " + index);
-        }
-
-        // Factorial
-        int n = 4;
-        int fact = Recursive.factorial(n);
-        System.out.println("\nFactorial of " + n + " is " + fact + "\n");
-
+        index = Search.binarySearch(data, toBeFound); if(index == -1){ System.out.println("Element not found"); } else { System.out.println("Element found at index " + index); } // Factorial int n = 4; int fact = Recursive.factorial(n); System.out.println("\nFactorial of " + n + " is " + fact + "\n");
         // Palindrome
         String word = "ANA";
         if(Recursive.isPalindrome(word)){
@@ -69,6 +58,12 @@ public class Main {
             System.out.println(word + " is not a palindrome.");
         }
         word = "NOT";
+        if(Recursive.isPalindrome(word)){
+            System.out.println(word + " is a palindrome.");
+        } else {
+            System.out.println(word + " is not a palindrome.");
+        }
+        word = "ANOTARAMADATADAMARATONA";
         if(Recursive.isPalindrome(word)){
             System.out.println(word + " is a palindrome.");
         } else {
