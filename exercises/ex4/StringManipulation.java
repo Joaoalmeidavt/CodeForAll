@@ -5,8 +5,8 @@ class StringManipulations {
         String name = "";
 
         domain = str.replace("https://", "");
-        name = str.replace("https://www.", "").replace(".org", "").replaceFirst("a", "A").replaceFirst("iad", "ia D").replaceFirst("co", " Co");
+        name = "< " + str.replace("https://www.", "").replace(".org", "").replaceFirst("a", "A").replaceFirst("iad", "ia D").replaceFirst("co", " Co") + "_ >";
 
-        System.out.println("I am a Code Cadet at < " + name + "_ >, " + domain);
+        System.out.println("I am a Code Cadet at " + name + ", " + domain);
     }
 }
