@@ -13,7 +13,7 @@ public class Instrument {
         return this.type;
     }
 
-    public void setType(String type){
+    public void setType(String type) {
         this.type = type;
     }
 
