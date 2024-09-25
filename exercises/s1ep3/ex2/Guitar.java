@@ -1,22 +1,11 @@
 package ex2;
 
-public class Guitar {
-    private String type;
+public class Guitar extends Instrument {
     private int numStrings;
-    private String color;
 
-    public Guitar(String type, int numStrings, String color){
-        this.type = type;
+    public Guitar(String type, int numStrings, String color) {
+        super(type, color);
         this.numStrings = numStrings;
-        this.color = color;
-    }
-
-    public String getType() {
-        return this.type;
-    }
-
-    public void setType(String type){
-        this.type = type;
     }
 
     public int getNumStrings() {
@@ -27,11 +16,13 @@ public class Guitar {
         this.numStrings = numStrings;
     }
 
-    public String getColor() {
-        return this.color;
+    public void breakString() {
+        this.numStrings--;
     }
 
-    public void setColor(String color) {
-        this.color = color;
+    public void play() {
+        System.out.println("Playing... Dling dling dlong...");
     }
+
+
 }

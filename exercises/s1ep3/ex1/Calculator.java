@@ -1,10 +1,18 @@
 public class Calculator {
-    public String colour = "black";
-    public String brand = "texas";
+    private String colour = "black";
+    private String brand = "texas";
 
     public Calculator(String brand, String colour) {
         this.colour = colour;
         this.brand = brand;
+    }
+
+    public String getBrand() {
+        return brand;
+    }
+
+    public void setColour(String colour){
+        this.colour = colour;
     }
 
     public int add(int number1, int number2) {

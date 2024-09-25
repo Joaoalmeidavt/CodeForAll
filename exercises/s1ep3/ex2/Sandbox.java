@@ -6,6 +6,9 @@ public class Sandbox {
         System.out.println(favourite.getType());
         System.out.println(favourite.getNumStrings());
         System.out.println(favourite.getColor());
+        favourite.breakString();
+        System.out.println(favourite.getNumStrings());
+        favourite.play();
 
     }
 }
