@@ -2,10 +2,12 @@ package ex2;
 
 public class Guitar extends Instrument {
     private int numStrings;
+    private int originalNumStrings;
 
     public Guitar(String type, int numStrings, String color) {
         super(type, color);
         this.numStrings = numStrings;
+        this.originalNumStrings = numStrings;
     }
 
     public int getNumStrings() {
@@ -18,6 +20,10 @@ public class Guitar extends Instrument {
 
     public void breakString() {
         this.numStrings--;
+    }
+
+    public void changeStrings() {
+        this.numStrings = this.originalNumStrings;
     }
 
     public void play() {
