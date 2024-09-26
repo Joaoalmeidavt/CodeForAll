@@ -6,6 +6,9 @@ public class Player {
     public int nTries;
     public int[] guesses = new int[11];
 
+    public Player(){
+    }
+
     public Player(String name) {
         this.name = name;
         this.nTries = 0;
