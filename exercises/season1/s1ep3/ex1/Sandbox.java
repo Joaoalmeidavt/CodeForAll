@@ -1,8 +1,9 @@
 public class Sandbox {
     public static void main(String[] args) {
-        Calculator calc = new Calculator("casio", "silver" );
-        int result = calc.add(1, 2, 3);
+        Calculator calc1 = new Calculator("casio", "silver" );
+        Calculator calc2 = new Calculator("texas", "silver" );
+        Calculator calc3 = new Calculator("xiaomi", "silver" );
 
-        System.out.println(result);
+        System.out.println(Calculator.getCalculatorsManufactured());
     }
 }

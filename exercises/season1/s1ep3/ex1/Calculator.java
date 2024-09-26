@@ -1,10 +1,12 @@
 public class Calculator {
     private String colour = "black";
     private String brand = "texas";
+    private static int calculatorsManufactured;
 
     public Calculator(String brand, String colour) {
         this.colour = colour;
         this.brand = brand;
+        calculatorsManufactured++;
     }
 
     public String getBrand() {
@@ -29,5 +31,9 @@ public class Calculator {
 
     public float add(float number1, float number2, float number3) {
         return number1 + number2 + number3;
+    }
+
+    public static int getCalculatorsManufactured(){
+        return calculatorsManufactured;
     }
 }
