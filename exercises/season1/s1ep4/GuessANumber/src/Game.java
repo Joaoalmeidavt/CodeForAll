@@ -54,6 +54,9 @@ public class Game {
             for(int i = 0; i< players.length; i++){
                 this.guesses[i] = this.players[i].generateGuess();
                 found = found || this.checkAnswer(this.guesses[i]);
+                if(found) {
+                    break;
+                }
             }
             nTries++;
         }
