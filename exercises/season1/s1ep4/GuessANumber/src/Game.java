@@ -1,5 +1,4 @@
 import java.util.Arrays;
-
 public class Game {
     public int answer;
     public Player pl1;

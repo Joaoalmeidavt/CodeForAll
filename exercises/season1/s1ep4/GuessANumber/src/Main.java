@@ -17,6 +17,5 @@ public class Main {
         Game multiGuessMyNumber = new Game(players);
         multiGuessMyNumber.multiPlay();
         System.out.println("..............................................");
-
     }
 }
