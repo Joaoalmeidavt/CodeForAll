@@ -9,8 +9,6 @@ public class Game {
 
     public int maxGuesses = 10;
 
-
-
     public Game(Player pl1, Player pl2) {
         answer = RandomNumberGenerator.getRandom();
         System.out.println("The hidden number is " + answer + ".");
