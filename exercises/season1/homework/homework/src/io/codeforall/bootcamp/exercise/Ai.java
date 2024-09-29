@@ -70,29 +70,7 @@ public class Ai {
         return String.join(" ", words);
     }
 
-    //public String palindromeReplace(String str) {
-    //    String result = str;
-    //    int i = 0;
-    //    int j = str.length();
-    //    int J = j;
-    //    while (j > i + 1) {
-    //        while (j > i + 1) {
-    //            String sub = str.substring(i, j);
-    //            if (isPalindrome(sub)) {
-    //                result = result.replaceAll(sub, "palindrome");
-    //                i = j;
-    //            }
-    //            j--;
-    //        }
-    //        J--;
-    //        j = J;
-    //    }
-    //    return result;
-    //}
-
     public String emailValidator() {
-        return "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$";
+        return "^[^\\s@]+@[^\\s@]+[^\\s@]+$";
     }
-
-
 }
