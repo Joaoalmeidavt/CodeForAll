@@ -48,6 +48,7 @@ public class Ai {
     }
 
     private boolean isPalindrome(String word) {
+        word = word.toLowerCase();
         if (word.length() == 1 || word.length() == 2) {
             if (word.charAt(0) == word.charAt(word.length() - 1)) {
                 return true;
