@@ -71,6 +71,6 @@ public class Ai {
     }
 
     public String emailValidator() {
-        return "^[^\\s@]+@[^\\s@]+[^\\s@]+$";
+        return "^[^\\s@]+@[^\\s@]+$";
     }
 }
