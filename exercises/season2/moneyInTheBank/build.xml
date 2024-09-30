@@ -1,0 +1,36 @@
+<?xml version="1.0" ?>
+<project name="MoneyInTheBank" default="jarfile">
+
+    <!-- Define our properties, "variables" -->
+    <target name="init" description="variables">
+        <property name="project.name" value="MoneyInTheBank" />
+        <property name="source.dir" value="src" />
+        <property name="main.class" value="io.codeforall.bootcamp.Main" />
+        <property name="build.dir" value="build" />
+        <property name="classes.dir" value="${build.dir}/classes" />
+    </target>
+
+    <!-- Clean-up function-->
+    <target name="clean" description="Cleans up the project" depends="init">
+        <delete dir="${build.dir}" />
+    </target>
+
+    <!-- Prepare directories -->
+    <target name="prepare" description="Create build and classes directories" depends="init">
+        <mkdir dir="${classes.dir}"/>
+    </target>
+
+    <!-- Compiles the source code -->
+    <target name="compile" description="Compiles the source code" depends="prepare">
+        <javac srcdir="${source.dir}" destdir="${classes.dir}"/>
+    </target>
+
+    <!-- Creates an executable (jar) file -->
+    <target name="jarfile" description="Creates the project jar file" depends="compile">
+        <jar destfile="${build.dir}/${project.name}.jar" basedir="${classes.dir}">
+            <manifest>
+                <attribute name="Main-Class" value="${main.class}" />
+            </manifest>
+        </jar>
+    </target>
+</project>
