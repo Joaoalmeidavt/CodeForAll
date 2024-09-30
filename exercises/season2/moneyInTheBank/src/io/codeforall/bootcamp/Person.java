@@ -9,27 +9,30 @@ public class Person {
 
     public Person(String name, int initialMoney, String jobTitle, int wage) {
         this.name = name;
-        this.account = new Account(name, initialMoney);
+        this.wallet = (int) (initialMoney * 0.2);
+        this.account = new Account(name, (int) (initialMoney*0.8));
         this.bank = new PiggyBank(this.account);
-        this.wallet = 0;
         this.job = new Job(jobTitle, wage);
     }
 
     public Person(String name, int initialMoney){
         this.name = name;
-        this.account = new Account(name, initialMoney);
+        this.wallet = (int) (initialMoney * 0.2);
+        this.account = new Account(name, (int) (initialMoney*0.8));
         this.bank = new PiggyBank(this.account);
-        this.wallet = 0;
     }
 
     public void work(){
+        System.out.println("Earned " + this.job.wage + "$ from working");
         this.bank.deposit(this.job.wage);
     }
 
     public void spend(int amount){
+        System.out.println("Attempting to spend " + amount + "$");
         if(amount > 0){
             if(this.wallet > amount) {
                 this.wallet -= amount;
+                System.out.println("Spent amount possible");
             } else {
                 System.out.println("Not enough available money in the wallet to be spent in that purchase, asking the bank.");
                 if(this.bank.take(amount) > 0){

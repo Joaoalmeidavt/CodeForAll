@@ -17,11 +17,13 @@ public class PiggyBank {
             account.money -= amount;
             money += amount;
         }
+        System.out.println("Deposited " + amount + "$ in the bank");
     }
 
     public int take(int amount){
         if(amount > 0 && this.money > amount){
             this.money -= amount;
+            System.out.println("Took " + amount + "$ from the bank");
             return amount;
         }
         return 0;
