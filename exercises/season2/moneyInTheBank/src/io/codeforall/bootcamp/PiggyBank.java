@@ -26,6 +26,8 @@ public class PiggyBank {
             System.out.println("Took " + amount + "$ from the bank");
             return amount;
         }
+        System.out.println("Not able to take " + amount + "$ from the bank, not enough money.");
         return 0;
     }
 }
+
