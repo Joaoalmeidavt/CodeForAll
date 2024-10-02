@@ -1,5 +1,5 @@
 <?xml version="1.0" ?>
-<project name="Hotel">
+<project name="Hotel" default="jarfile">
     <target name="init" description="variables">
         <property name="project.name" value="Hotel" />
         <property name="source.dir" value="src"/>
