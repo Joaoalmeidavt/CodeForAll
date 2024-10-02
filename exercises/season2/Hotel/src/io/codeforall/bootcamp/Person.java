@@ -14,6 +14,10 @@ public class Person {
     }
 
     public void checkIn(){
+        if(this.key != -1){
+            System.out.println("You already have a room.");
+            return;
+        }
         this.roomNumber = this.myHotel.checkIn();
         this.key = System.identityHashCode(this.myHotel);
         System.out.println(this.name +
@@ -26,6 +30,10 @@ public class Person {
     }
 
     public void checkOut(){
+        if(this.key == -1){
+            System.out.println("You can't checkout if you haven't checked in.");
+            return;
+        }
         this.myHotel.checkOut(this.myHotel.rooms[this.roomNumber]);
         this.roomNumber = -1;
         this.key = -1;
