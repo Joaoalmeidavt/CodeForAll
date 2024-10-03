@@ -10,10 +10,15 @@ public class Hotel {
         this.name = name;
         this.availableRooms = true;
         this.numberOfRooms = nStars >= 4 ? 200 : 100;
-        this.rooms = new Room[this.numberOfRooms];
-        for (int i = 0; i < this.rooms.length; i++) {
-            this.rooms[i] = new Room();
+        this.rooms = createRooms(this.numberOfRooms);
+    }
+
+    private Room[] createRooms(int nr){
+        Room[] rs = new Room[nr];
+        for (int i = 0; i < nr; i++) {
+            rs[i] = new Room();
         }
+       return rs;
     }
 
     private int getAvailableRoom() {
