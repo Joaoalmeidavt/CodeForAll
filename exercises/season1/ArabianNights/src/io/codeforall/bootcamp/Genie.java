@@ -9,7 +9,5 @@ public abstract class Genie {
         this.wishesGranted = 0;
     }
 
-    public void grant(){
-
-    }
+    public abstract void grant();
 }
