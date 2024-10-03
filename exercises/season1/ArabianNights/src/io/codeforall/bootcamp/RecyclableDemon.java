@@ -1,7 +1,7 @@
 package io.codeforall.bootcamp;
 
-public class RecyclableDeamon extends Genie {
-    public RecyclableDeamon(int maxWishes){
+public class RecyclableDemon extends Genie {
+    public RecyclableDemon(int maxWishes){
         super(maxWishes);
     }
 

@@ -17,7 +17,7 @@ public class MagicLamp {
         if(this.counter <= this.maxGenies){
             chosen = (this.counter % 2 == 0 ? new FriendlyGenie(5) : new GrumpyGenie(3));
         } else {
-            chosen = new RecyclableDeamon(6);
+            chosen = new RecyclableDemon(6);
         }
         return chosen;
     }
