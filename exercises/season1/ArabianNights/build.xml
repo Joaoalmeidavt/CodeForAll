@@ -16,7 +16,7 @@
         <mkdir dir="${classes.dir}" />
     </target>
 
-    <target name="compile" description="Compile hte source code" depends="prepare">
+    <target name="compile" description="Compile the source code" depends="prepare">
         <javac srcdir="${source.dir}" destdir="${classes.dir}"/>
     </target>
 

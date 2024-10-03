@@ -28,6 +28,9 @@ public class MagicLamp {
     }
 
     public boolean compareLamps(MagicLamp lamp){
-        return (this.maxGenies == lamp.maxGenies && this.recycledTimes == lamp.recycledTimes && this.counter == lamp.counter) ? true : false;
+        return (this.maxGenies == lamp.maxGenies &&
+                this.recycledTimes == lamp.recycledTimes &&
+                this.counter == lamp.counter)
+                ? true : false;
     }
 }
