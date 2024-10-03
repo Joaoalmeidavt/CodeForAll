@@ -26,4 +26,8 @@ public class MagicLamp {
         this.counter = 0;
         this.recycledTimes++;
     }
+
+    public boolean compareLamps(MagicLamp lamp){
+        return (this.maxGenies == lamp.maxGenies && this.recycledTimes == lamp.recycledTimes && this.counter == lamp.counter) ? true : false;
+    }
 }
