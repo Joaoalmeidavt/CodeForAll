@@ -1,6 +1,6 @@
 package io.codeforall.bootcamp;
 
-public class Genie {
+public abstract class Genie {
     public int maxWishes;
     public int wishesGranted;
 
