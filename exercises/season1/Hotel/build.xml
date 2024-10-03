@@ -1,0 +1,28 @@
+<?xml version="1.0" ?>
+<project name="Hotel" default="jarfile">
+    <target name="init" description="variables">
+        <property name="project.name" value="Hotel" />
+        <property name="source.dir" value="src"/>
+        <property name="main.class" value="io.codeforall.bootcamp.Playground"/>
+        <property name="build.dir" value="build"/>
+        <property name="classes.dir" value="${build.dir}/classes"/>
+    </target>
+
+    <target name="clean" description="Cleans the project" depends="init">
+        <delete dir="${build.dir}" />
+    </target>
+
+    <target name="prepare" description="Create build and classes directories" depends="init">
+        <mkdir dir="${classes.dir}" />
+    </target>
+
+    <target name="compile" description="Compiles the source code" depends="prepare">
+        <javac srcdir="${source.dir}" destdir="${classes.dir}"/>
+    </target>
+
+    <target name="jarfile" description="Create the project jar file" depends="compile">
+        <manifest>
+            <attribute name="Main-Class" value="${main.class}" />
+        </manifest>
+    </target>
+</project>
