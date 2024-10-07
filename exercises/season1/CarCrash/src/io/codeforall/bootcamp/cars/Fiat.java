@@ -7,7 +7,6 @@ public class Fiat extends Car {
     public boolean crashed;
     public Fiat(){
         super();
-        super.setPos(new Position((int) (Math.random() * Field.getWidth()) ,(int) (Math.random() * Field.getHeight())));
         this.crashed = false;
     }
 

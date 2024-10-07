@@ -41,7 +41,6 @@ public class Game {
         for (int i = 0; i < cars.length; i++) {
             cars[i] = CarFactory.getNewCar();
         }
-        //System.out.println("Fiat " + cars[0].getPos().getCol() + cars[0].getPos().getRow());
         Field.draw(cars);
 
     }

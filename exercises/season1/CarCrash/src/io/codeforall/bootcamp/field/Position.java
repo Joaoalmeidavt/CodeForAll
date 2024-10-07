@@ -1,7 +1,6 @@
 package io.codeforall.bootcamp.field;
 
 public class Position {
-
     public int col;
     public int row;
 

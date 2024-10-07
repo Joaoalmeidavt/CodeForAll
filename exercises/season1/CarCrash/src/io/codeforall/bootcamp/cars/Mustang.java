@@ -8,7 +8,6 @@ public class Mustang extends Car {
 
     public Mustang() {
         super();
-        super.setPos(new Position((int) (Math.random() * Field.getWidth()), (int) (Math.random() * Field.getHeight())));
         this.crashed = false;
     }
 
