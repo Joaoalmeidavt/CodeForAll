@@ -11,7 +11,7 @@ public class SoldierEnemy extends Enemy {
 
     @Override
     public void hit(int damage) {
-        System.out.println("Soldier Enemy shot.");
+        System.out.println("Soldier Enemy shot. Now at " + this.health + " health.");
         this.health -= damage;
 
         if (this.health <= 0) {

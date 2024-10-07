@@ -10,7 +10,7 @@ public class ArmouredEnemy extends Enemy{
     }
     @Override
     public void hit(int damage){
-        System.out.println("Armoured enemy shot.");
+        System.out.println("Armoured Enemy shot. Now at " + this.health + " health.");
         if(this.armour > damage){
             this.armour -= damage;
             return;
