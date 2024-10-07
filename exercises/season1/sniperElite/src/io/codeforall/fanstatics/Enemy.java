@@ -19,8 +19,7 @@ public abstract class Enemy extends GameObject implements Destroyable {
     }
 
     @Override
-    public String getMessage(){
-        return "I am an enemy.";
+    public void setDestroyed(){
     }
 
 
