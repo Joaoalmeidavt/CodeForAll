@@ -25,24 +25,20 @@ public class Game {
     boolean fiatTurn;
 
     public Game(int cols, int rows, int delay) {
-
         Field.init(cols, rows);
         this.delay = delay;
         this.fiatTurn = true;
-
     }
 
     /**
      * Creates a bunch of cars and randomly puts them in the field
      */
     public void init() {
-
         cars = new Car[MANUFACTURED_CARS];
         for (int i = 0; i < cars.length; i++) {
             cars[i] = CarFactory.getNewCar();
         }
         Field.draw(cars);
-
     }
 
     /**
@@ -72,7 +68,6 @@ public class Game {
 
         for (Car car : cars) {
             if (car instanceof Mustang || (car instanceof Fiat && fiatTurn)) {
-
                 int[] direction = new int[]{0, 0};
                 rand = (int) (Math.random() * 4);
                 if (!car.isCrashed()) {
@@ -109,7 +104,6 @@ public class Game {
                 grid[car.getPos().getCol()][car.getPos().getRow()] = i;
             }
         }
-
         fiatTurn = !fiatTurn;
     }
 

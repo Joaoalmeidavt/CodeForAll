@@ -3,5 +3,8 @@
 */*/out
 */*/*/out
 .idea
+*/.idea
+*/*/.idea
+*/*/*/.idea
 *.idea
 *.iml
