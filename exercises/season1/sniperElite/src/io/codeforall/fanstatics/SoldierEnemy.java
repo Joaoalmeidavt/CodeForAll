@@ -11,8 +11,7 @@ public class SoldierEnemy extends Enemy {
 
     @Override
     public void hit(int damage) {
-        this.health -= damage;
-
+        super.hit(damage);
         if (this.health <= 0) {
             this.isDead = true;
             System.out.println("Soldier Enemy died.");
