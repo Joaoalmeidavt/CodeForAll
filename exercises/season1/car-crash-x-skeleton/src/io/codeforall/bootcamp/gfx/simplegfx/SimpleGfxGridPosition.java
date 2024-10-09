@@ -30,7 +30,6 @@ public class SimpleGfxGridPosition extends AbstractGridPosition {
                 grid.PADDING + super.getRow() * grid.getCellSize(),
                 grid.getCellSize(),
                 grid.getCellSize());
-        //throw new UnsupportedOperationException();
     }
 
     /**
@@ -51,7 +50,6 @@ public class SimpleGfxGridPosition extends AbstractGridPosition {
         this.rectangle.setColor(Color.GREEN);
         this.rectangle.draw();
         this.rectangle.fill();
-        //throw new UnsupportedOperationException();
     }
 
     /**
@@ -59,8 +57,6 @@ public class SimpleGfxGridPosition extends AbstractGridPosition {
      */
     @Override
     public void show() {
-        //throw new UnsupportedOperationException();
-        //this.simpleGfxGrid.init();
         this.rectangle.setColor(Color.GREEN);
         this.rectangle.draw();
         this.rectangle.fill();
@@ -71,7 +67,6 @@ public class SimpleGfxGridPosition extends AbstractGridPosition {
      */
     @Override
     public void hide() {
-        //throw new UnsupportedOperationException();
         this.rectangle.delete();
     }
 
