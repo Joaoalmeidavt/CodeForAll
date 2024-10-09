@@ -16,32 +16,37 @@ public class SimpleGfxGridPosition extends AbstractGridPosition {
 
     private Rectangle rectangle;
     private SimpleGfxGrid simpleGfxGrid;
+    private SimpleGfxGrid grid;
 
     /**
      * Simple graphics position constructor
+     *
      * @param grid Simple graphics grid
      */
-    public SimpleGfxGridPosition(SimpleGfxGrid grid){
+    public SimpleGfxGridPosition(SimpleGfxGrid grid) {
         super((int) (Math.random() * grid.getCols()), (int) (Math.random() * grid.getRows()), grid);
-        this.rectangle = new Rectangle(grid.PADDING+super.getCol()*grid.getCellSize(),
-                                        grid.PADDING+super.getRow()*grid.getCellSize(),
-                                             grid.getCellSize(),
-                                                grid.getCellSize());
+        this.grid = grid;
+        this.rectangle = new Rectangle(grid.PADDING + super.getCol() * grid.getCellSize(),
+                grid.PADDING + super.getRow() * grid.getCellSize(),
+                grid.getCellSize(),
+                grid.getCellSize());
         //throw new UnsupportedOperationException();
     }
 
     /**
      * Simple graphics position constructor
-     * @param col position column
-     * @param row position row
+     *
+     * @param col  position column
+     * @param row  position row
      * @param grid Simple graphics grid
      */
-    public SimpleGfxGridPosition(int col, int row, SimpleGfxGrid grid){
+    public SimpleGfxGridPosition(int col, int row, SimpleGfxGrid grid) {
         super(col, row, grid);
-        this.rectangle = new Rectangle(grid.PADDING+col*grid.getCellSize(),
-                                        grid.PADDING+row*grid.getCellSize(),
-                                                grid.getCellSize(),
-                                                    grid.getCellSize());
+        this.grid = grid;
+        this.rectangle = new Rectangle(grid.PADDING + col * grid.getCellSize(),
+                grid.PADDING + row * grid.getCellSize(),
+                grid.getCellSize(),
+                grid.getCellSize());
 
         this.rectangle.setColor(Color.GREEN);
         this.rectangle.draw();
@@ -75,7 +80,12 @@ public class SimpleGfxGridPosition extends AbstractGridPosition {
      */
     @Override
     public void moveInDirection(GridDirection direction, int distance) {
-        throw new UnsupportedOperationException();
+        int oldX = this.getCol();
+        int oldY = this.getRow();
+        super.moveInDirection(direction, distance);
+        int newX = this.getCol();
+        int newY = this.getRow();
+        this.rectangle.translate((newX - oldX)*this.grid.getCellSize(), (newY - oldY)*this.grid.getCellSize());
     }
 
     /**
@@ -84,7 +94,7 @@ public class SimpleGfxGridPosition extends AbstractGridPosition {
     @Override
     public void setColor(GridColor color) {
         super.setColor(color);
-        //this.rectangle.setColor(color);
+        this.rectangle.setColor(SimpleGfxColorMapper.getColor(color));
     }
 
 
