@@ -30,7 +30,7 @@ public class FileManager {
             throw new NotEnoughPermissionsException("Not enough permissions");
         }
         for(File f : this.files){
-            if(f.getName() == name){
+            if(f.getName().equals(name)){
                 return f;
             }
         }
@@ -42,7 +42,7 @@ public class FileManager {
             throw new NotEnoughPermissionsException("Not enough permissions");
         }
         for (int i = 0; i < this.files.length; i++) {
-            if(this.files[i].getName() == ""){
+            if(this.files[i].getName().equals("")){
                 this.files[i].setName(name);
                 return;
             }
