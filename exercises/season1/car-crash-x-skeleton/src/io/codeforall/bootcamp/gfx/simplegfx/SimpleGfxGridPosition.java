@@ -57,7 +57,7 @@ public class SimpleGfxGridPosition extends AbstractGridPosition {
      */
     @Override
     public void show() {
-        this.rectangle.setColor(Color.GREEN);
+        //this.rectangle.setColor(Color.GREEN);
         this.rectangle.draw();
         this.rectangle.fill();
     }
