@@ -100,11 +100,10 @@ public class Game implements KeyboardHandler {
 
         for (int i = 0; i < cars.length - 1; i++) {
             cars[i].move();
+            collisionDetector.check(cars[i]);
         }
 
-        for (Car c : cars) {
-            collisionDetector.check(c);
-        }
+        collisionDetector.check(cars[cars.length - 1]);
 
     }
 

@@ -87,7 +87,6 @@ public class SimpleGfxGrid implements Grid {
     @Override
     public GridPosition makeGridPosition() {
         return new SimpleGfxGridPosition(this);
-
     }
 
     /**
