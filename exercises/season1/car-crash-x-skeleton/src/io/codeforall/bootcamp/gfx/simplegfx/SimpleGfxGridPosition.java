@@ -26,10 +26,10 @@ public class SimpleGfxGridPosition extends AbstractGridPosition {
     public SimpleGfxGridPosition(SimpleGfxGrid grid) {
         super((int) (Math.random() * grid.getCols()), (int) (Math.random() * grid.getRows()), grid);
         this.grid = grid;
-        this.rectangle = new Rectangle(grid.PADDING + super.getCol() * grid.getCellSize(),
-                grid.PADDING + super.getRow() * grid.getCellSize(),
-                grid.getCellSize(),
-                grid.getCellSize());
+        this.rectangle = new Rectangle(grid.columnToX(super.getCol()),
+                                        grid.rowToY(super.getRow()),
+                                        grid.getCellSize(),
+                                        grid.getCellSize());
     }
 
     /**
@@ -80,7 +80,7 @@ public class SimpleGfxGridPosition extends AbstractGridPosition {
         super.moveInDirection(direction, distance);
         int newX = this.getCol();
         int newY = this.getRow();
-        this.rectangle.translate((newX - oldX)*this.grid.getCellSize(), (newY - oldY)*this.grid.getCellSize());
+        this.rectangle.translate((newX - oldX) * this.grid.getCellSize(), (newY - oldY) * this.grid.getCellSize());
     }
 
     /**

@@ -103,7 +103,7 @@ public class SimpleGfxGrid implements Grid {
      * @return y pixel value
      */
     public int rowToY(int row) {
-        throw new UnsupportedOperationException();
+        return this.PADDING + row * this.getCellSize();
     }
 
     /**
@@ -112,6 +112,6 @@ public class SimpleGfxGrid implements Grid {
      * @return x pixel value
      */
     public int columnToX(int column) {
-        throw new UnsupportedOperationException();
+        return this.PADDING + column * this.getCellSize();
     }
 }
