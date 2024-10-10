@@ -75,12 +75,13 @@ public class SimpleGfxGridPosition extends AbstractGridPosition {
      */
     @Override
     public void moveInDirection(GridDirection direction, int distance) {
-        int oldX = this.getCol();
-        int oldY = this.getRow();
+        int oldCol = this.getCol();
+        int oldRow = this.getRow();
         super.moveInDirection(direction, distance);
-        int newX = this.getCol();
-        int newY = this.getRow();
-        this.rectangle.translate((newX - oldX) * this.grid.getCellSize(), (newY - oldY) * this.grid.getCellSize());
+        int newCol = this.getCol();
+        int newRow = this.getRow();
+        this.rectangle.translate((newCol - oldCol) * this.grid.getCellSize(), (newRow - oldRow) * this.grid.getCellSize());
+
     }
 
     /**
