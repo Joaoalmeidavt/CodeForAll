@@ -2,7 +2,7 @@ package io.codeforall.fanstatics;
 
 import java.util.Iterator;
 
-public class MyIterator implements Iterator {
+public class MyIterator implements Iterator<Integer> {
     private Range range;
     private int index;
     private int element;
