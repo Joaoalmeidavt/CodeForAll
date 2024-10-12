@@ -10,27 +10,27 @@ public class MyIterator implements Iterator {
     public MyIterator(Range range) {
         this.range = range;
         this.index = 0;
-        this.element = range.getMin() - 1;
+        this.element = range.getMin();
     }
 
     @Override
     public boolean hasNext() {
-        element++;
-        return this.element <= range.getMax();
+        return this.element < range.getMax()+1;
     }
 
     @Override
     public Integer next() {
-        if(this.range.collection[element- range.getMin()]) {
-            element++;
-            return next();
+        if(this.range.collection[this.index]){
+            this.index++;
+            return this.element++;
         }
-
-        return element;
+        this.index++;
+        this.element++;
+        return next();
     }
 
     @Override
     public void remove() {
-        this.range.collection[element - range.getMin()] = true;
+        this.range.collection[index-1] = false;
     }
 }

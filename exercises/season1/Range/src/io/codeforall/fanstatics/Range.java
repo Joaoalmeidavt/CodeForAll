@@ -1,5 +1,6 @@
 package io.codeforall.fanstatics;
 
+import java.util.Arrays;
 import java.util.Iterator;
 import java.util.LinkedList;
 
@@ -7,16 +8,13 @@ public class Range implements Iterable<Integer> {
     private Integer min;
     private Integer max;
     public boolean[] collection;
+
     public Range(int min, int max) {
         this.min = min;
         this.max = max;
-
-        boolean[] collection = new boolean[max + 1];
-
-
         this.collection = new boolean[max - min + 1];
 
-        System.out.println(this.collection.length);
+        Arrays.fill(this.collection, true);
     }
 
     public Integer getMin() {
