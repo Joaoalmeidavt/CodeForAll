@@ -2,7 +2,6 @@ package io.codeforall.fanstatics;
 
 import java.util.Arrays;
 import java.util.Iterator;
-import java.util.LinkedList;
 
 public class Range implements Iterable<Integer> {
     private Integer min;

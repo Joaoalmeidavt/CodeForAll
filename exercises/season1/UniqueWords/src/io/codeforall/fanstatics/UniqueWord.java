@@ -9,9 +9,7 @@ public class UniqueWord implements Iterable<String> {
 
     public UniqueWord(String string){
         this.set = new HashSet<>();
-        String[] wordList = string.split(" ");
-
-        this.set.addAll(Arrays.stream(wordList).toList());
+        this.set.addAll(Arrays.stream(string.split(" ")).toList());
     }
 
 
