@@ -8,11 +8,7 @@ public class WordHistogramInherit extends HashMap<String, Integer> implements It
         super();
         String[] words = string.split(" ");
         for(String word : words){
-            try {
-                super.put(word, super.get(word) + 1);
-            } catch (Exception ex){
-                super.put(word, 1);
-            }
+            super.put(word, super.getOrDefault(word, 0) + 1);
         }
     }
 
