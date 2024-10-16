@@ -4,7 +4,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 
 public class Main {
-    public static final String FILE_PATH = "rsc/file.txt";
+    public static final String FILE_PATH = "rsc/lorem.txt";
     public static void main(String[] args) throws IOException {
 
         try {
