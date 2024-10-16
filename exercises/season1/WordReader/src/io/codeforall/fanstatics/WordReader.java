@@ -27,6 +27,8 @@ public class WordReader implements Iterable<String> {
             result += line;
         }
 
+        this.bReader.close();
+
         this.words = result.split(" ");
     }
 
