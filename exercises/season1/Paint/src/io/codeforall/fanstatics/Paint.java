@@ -13,6 +13,7 @@ import org.academiadecodigo.simplegraphics.keyboard.KeyboardEvent;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardEventType;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardHandler;
 
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -46,7 +47,7 @@ public class Paint implements KeyboardHandler {
         initKeyboard();
     }
 
-    public void clear(){
+    public void clear() {
         for (int i = 0; i < this.grid.getCols(); i++) {
             for (int j = 0; j < this.grid.getRows(); j++) {
                 this.positions[i][j].rectangle.delete();
@@ -60,7 +61,7 @@ public class Paint implements KeyboardHandler {
         FileOutputStream outputStream = new FileOutputStream("rsc/board");
         for (int i = 0; i < this.grid.getCols(); i++) {
             for (int j = 0; j < this.grid.getRows(); j++) {
-                if(this.blackOn[i][j]){
+                if (this.blackOn[i][j]) {
                     outputStream.write(1);
                     continue;
                 }
@@ -68,6 +69,24 @@ public class Paint implements KeyboardHandler {
             }
         }
         outputStream.close();
+    }
+
+    public void load() throws IOException {
+        FileInputStream inputStream = new FileInputStream("rsc/board");
+        int b;
+        for (int i = 0; i < this.grid.getCols(); i++) {
+            for (int j = 0; j < this.grid.getRows(); j++) {
+                b = inputStream.read();
+                if (b == 0) {
+                    this.blackOn[i][j] = false;
+                    this.positions[i][j].rectangle.draw();
+                    continue;
+                }
+                this.blackOn[i][j] = true;
+                this.positions[i][j].rectangle.setColor(Color.BLACK);
+                this.positions[i][j].rectangle.fill();
+            }
+        }
     }
 
     private void initKeyboard() {
@@ -98,15 +117,20 @@ public class Paint implements KeyboardHandler {
         space.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
         this.keyboard.addEventListener(space);
 
-        KeyboardEvent c= new KeyboardEvent();
+        KeyboardEvent c = new KeyboardEvent();
         c.setKey(KeyboardEvent.KEY_C);
         c.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
         this.keyboard.addEventListener(c);
 
-        KeyboardEvent s= new KeyboardEvent();
+        KeyboardEvent s = new KeyboardEvent();
         s.setKey(KeyboardEvent.KEY_S);
         s.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
         this.keyboard.addEventListener(s);
+
+        KeyboardEvent l = new KeyboardEvent();
+        l.setKey(KeyboardEvent.KEY_L);
+        l.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
+        this.keyboard.addEventListener(l);
     }
 
     @Override
@@ -126,7 +150,7 @@ public class Paint implements KeyboardHandler {
                 break;
             case KeyboardEvent.KEY_SPACE:
                 boolean black = this.blackOn[this.cursor.getCol()][this.cursor.getRow()];
-                if(black){
+                if (black) {
                     this.blackOn[this.cursor.getCol()][this.cursor.getRow()] = false;
                     this.positions[this.cursor.getCol()][this.cursor.getRow()].rectangle.draw();
                     new SimpleGfxGridPosition(this.cursor.getCol(), this.cursor.getRow(), this.grid);
@@ -146,6 +170,12 @@ public class Paint implements KeyboardHandler {
                     throw new RuntimeException(e);
                 }
                 break;
+            case KeyboardEvent.KEY_L:
+                try {
+                    this.load();
+                } catch (IOException e){
+                    throw new RuntimeException(e);
+                }
         }
     }
 
