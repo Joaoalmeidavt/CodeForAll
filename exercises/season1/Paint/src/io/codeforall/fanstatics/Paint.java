@@ -87,6 +87,7 @@ public class Paint implements KeyboardHandler {
                 this.positions[i][j].rectangle.fill();
             }
         }
+        inputStream.close();
     }
 
     private void initKeyboard() {
