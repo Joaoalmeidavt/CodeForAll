@@ -27,8 +27,10 @@ public class Paint implements KeyboardHandler {
     private SimpleGfxGridPosition[][] positions;
     private boolean[][] blackOn;
     private SimpleGfxGridPosition cursor;
+    private boolean isFlipping;
 
     public Paint(int cols, int rows) {
+        this.isFlipping = false;
         this.cols = cols;
         this.rows = rows;
         this.grid = SimpleGfxGridFactory.makeGrid(cols, rows);
@@ -45,6 +47,18 @@ public class Paint implements KeyboardHandler {
         this.cursor.setColor(GridColor.GREEN);
 
         initKeyboard();
+    }
+
+    public void paint(){
+        this.blackOn[this.cursor.getCol()][this.cursor.getRow()] = true;
+        this.positions[this.cursor.getCol()][this.cursor.getRow()].rectangle.setColor(Color.BLACK);
+        this.positions[this.cursor.getCol()][this.cursor.getRow()].rectangle.fill();
+    }
+
+    public void unpaint(){
+        this.blackOn[this.cursor.getCol()][this.cursor.getRow()] = false;
+        this.positions[this.cursor.getCol()][this.cursor.getRow()].rectangle.draw();
+        new SimpleGfxGridPosition(this.cursor.getCol(), this.cursor.getRow(), this.grid);
     }
 
     public void clear() {
@@ -113,10 +127,15 @@ public class Paint implements KeyboardHandler {
         moveDown.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
         this.keyboard.addEventListener(moveDown);
 
-        KeyboardEvent space = new KeyboardEvent();
-        space.setKey(KeyboardEvent.KEY_SPACE);
-        space.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
-        this.keyboard.addEventListener(space);
+        KeyboardEvent spacePressed = new KeyboardEvent();
+        spacePressed.setKey(KeyboardEvent.KEY_SPACE);
+        spacePressed.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
+        this.keyboard.addEventListener(spacePressed);
+
+        KeyboardEvent spaceReleased = new KeyboardEvent();
+        spaceReleased.setKey(KeyboardEvent.KEY_SPACE);
+        spaceReleased.setKeyboardEventType(KeyboardEventType.KEY_RELEASED);
+        this.keyboard.addEventListener(spaceReleased);
 
         KeyboardEvent c = new KeyboardEvent();
         c.setKey(KeyboardEvent.KEY_C);
@@ -136,30 +155,64 @@ public class Paint implements KeyboardHandler {
 
     @Override
     public void keyPressed(KeyboardEvent keyboardEvent) {
+        System.out.println(this.isFlipping);
         switch (keyboardEvent.getKey()) {
             case KeyboardEvent.KEY_RIGHT:
                 this.cursor.moveInDirection(GridDirection.RIGHT, 1);
+                boolean black = this.blackOn[this.cursor.getCol()][this.cursor.getRow()];
+                if(this.isFlipping){
+                    if(black) {
+                        this.unpaint();
+                        break;
+                    }
+                    this.paint();
+                    break;
+                }
                 break;
             case KeyboardEvent.KEY_LEFT:
                 this.cursor.moveInDirection(GridDirection.LEFT, 1);
+                black = this.blackOn[this.cursor.getCol()][this.cursor.getRow()];
+                if(this.isFlipping){
+                    if(black) {
+                        this.unpaint();
+                        break;
+                    }
+                    this.paint();
+                    break;
+                }
                 break;
             case KeyboardEvent.KEY_UP:
                 this.cursor.moveInDirection(GridDirection.UP, 1);
+                black = this.blackOn[this.cursor.getCol()][this.cursor.getRow()];
+                if(this.isFlipping){
+                    if(black) {
+                        this.unpaint();
+                        break;
+                    }
+                    this.paint();
+                    break;
+                }
                 break;
             case KeyboardEvent.KEY_DOWN:
                 this.cursor.moveInDirection(GridDirection.DOWN, 1);
-                break;
-            case KeyboardEvent.KEY_SPACE:
-                boolean black = this.blackOn[this.cursor.getCol()][this.cursor.getRow()];
-                if (black) {
-                    this.blackOn[this.cursor.getCol()][this.cursor.getRow()] = false;
-                    this.positions[this.cursor.getCol()][this.cursor.getRow()].rectangle.draw();
-                    new SimpleGfxGridPosition(this.cursor.getCol(), this.cursor.getRow(), this.grid);
+                black = this.blackOn[this.cursor.getCol()][this.cursor.getRow()];
+                if(this.isFlipping){
+                    if(black) {
+                        this.unpaint();
+                        break;
+                    }
+                    this.paint();
                     break;
                 }
-                this.blackOn[this.cursor.getCol()][this.cursor.getRow()] = true;
-                this.positions[this.cursor.getCol()][this.cursor.getRow()].rectangle.setColor(Color.BLACK);
-                this.positions[this.cursor.getCol()][this.cursor.getRow()].rectangle.fill();
+                break;
+            case KeyboardEvent.KEY_SPACE:
+                this.isFlipping = true;
+                black = this.blackOn[this.cursor.getCol()][this.cursor.getRow()];
+                if (black) {
+                    this.unpaint();
+                    break;
+                }
+                this.paint();
                 break;
             case KeyboardEvent.KEY_C:
                 this.clear();
@@ -182,6 +235,10 @@ public class Paint implements KeyboardHandler {
 
     @Override
     public void keyReleased(KeyboardEvent keyboardEvent) {
-
+        switch (keyboardEvent.getKey()){
+            case KeyboardEvent.KEY_SPACE:
+                this.isFlipping = false;
+                break;
+        }
     }
 }
