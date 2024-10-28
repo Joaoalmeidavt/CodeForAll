@@ -29,16 +29,15 @@ public class BQueue<T> {
      * @param data the data to add to the queue
      */
     public void offer(T data) {
-        //System.out.println("Offering...");
         synchronized (this) {
-            while (this.getSize() >= this.limit) {
+            while (this.getSize() == this.limit) {
                 try {
                     wait();
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
             }
-            System.out.println(data + " added.");
+            System.out.println(Thread.currentThread().getName() + " " + data + " added.");
             this.queue.add(data);
             notifyAll();
         }
@@ -51,7 +50,6 @@ public class BQueue<T> {
      * @return the data from the head of the queue
      */
     public T poll() {
-        //System.out.println("Polling...");
         synchronized (this) {
             while (this.getSize() == 0) {
                 try {
@@ -60,9 +58,9 @@ public class BQueue<T> {
                     e.printStackTrace();
                 }
             }
-            //System.out.println(data + " removed.");
             System.out.println("############### Currently " + this.getSize() + " pizzas.");
             T data = this.queue.remove();
+            System.out.println(Thread.currentThread().getName() + " " + data + " removed.");
             notifyAll();
             return data;
         }

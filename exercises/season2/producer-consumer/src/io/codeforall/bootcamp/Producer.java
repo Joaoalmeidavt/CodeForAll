@@ -23,7 +23,6 @@ public class Producer implements Runnable {
     @Override
     public void run() {
         for (int i = 0; i < this.elementNum; i++) {
-            //System.out.println("Producing a pizza...");
            this.queue.offer(new Pizza());
         }
     }

@@ -24,9 +24,7 @@ public class Consumer implements Runnable {
     public void run() {
         for (int i = 0; i < this.elementNum; i++) {
             Pizza pizza = this.queue.poll();
-            System.out.println(pizza + " removed.");
         }
-
     }
 
 }
