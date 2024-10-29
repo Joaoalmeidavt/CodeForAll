@@ -9,8 +9,8 @@ import java.util.Queue;
  * @param <T> the type of elements stored by this queue
  */
 public class BQueue<T> {
-    private Queue<T> queue;
-    private int limit;
+    private final Queue<T> queue;
+    private final int limit;
 
     /**
      * Constructs a new queue with a maximum size
