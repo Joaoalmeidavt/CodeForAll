@@ -59,7 +59,7 @@ public class BQueue<T> {
                 }
             }
             System.out.println("############### Currently " + this.getSize() + " pizzas.");
-            T data = this.queue.remove();
+            T data = this.queue.poll();
             System.out.println(Thread.currentThread().getName() + " " + data + " removed.");
             notifyAll();
             return data;
