@@ -33,11 +33,20 @@ public class Client implements Runnable {
                 // Client input
                 line = in.readLine();
                 System.out.println(line);
-                System.out.println(this.clients);
-                if (line.split(" ")[0].equals("/broadcast")) {
-                    this.broadcast(line.replaceFirst("/broadcast", ""));
-                }
-                if (line.equals("/quit")) {
+
+                String command = line.split(" ")[0];
+                line = line.replaceFirst(command + " ", "");
+                System.out.println(command);
+
+                if(command.equals("/list") || command.equals("/help")){
+                    this.list();
+                } else if (command.equals("/broadcast")) {
+                    this.broadcast(line);
+                } else if (command.equals("/whisper")) {
+                    String destName = line.split(" ")[0];
+                    line = line.replaceFirst(destName, "");
+                    this.whisper(destName, line);
+                } else if (line.equals("/quit")) {
                     break;
                 }
             }
@@ -64,4 +73,21 @@ public class Client implements Runnable {
         }
     }
 
+    public void whisper(String destName, String message) {
+        for (Client client : this.clients) {
+            if (client.name.equals(destName)) {
+                client.out.println("(" + this.name + "):" + message);
+                client.out.flush();
+            }
+        }
+    }
+
+    public void list(){
+        this.out.println("Available commands:");
+        this.out.println("/broadcast <message> - Sends the message to everyone.");
+        this.out.println("/whisper <destination> <message> - Sends the message only to destination user.");
+        this.out.println("/list or /help - List available chat commands.");
+        this.out.println("/quit - Quits the chat.");
+        this.out.flush();
+    }
 }
