@@ -29,7 +29,7 @@ public class Client implements Runnable {
             System.out.println(name + " has entered the chat.");
             this.broadcast(" has entered the chat.");
 
-            while (true) {
+            mainWhile : while (true) {
                 // Client input
                 line = in.readLine();
                 System.out.println(line);
@@ -38,16 +38,27 @@ public class Client implements Runnable {
                 line = line.replaceFirst(command + " ", "");
                 System.out.println(command);
 
-                if(command.equals("/list") || command.equals("/help")){
-                    this.list();
-                } else if (command.equals("/broadcast")) {
-                    this.broadcast(line);
-                } else if (command.equals("/whisper")) {
-                    String destName = line.split(" ")[0];
-                    line = line.replaceFirst(destName, "");
-                    this.whisper(destName, line);
-                } else if (line.equals("/quit")) {
-                    break;
+                switch (command){
+                    case "/help":
+                        this.list();
+                        break;
+                    case "/list":
+                        this.list();
+                        break;
+                    case "/changename":
+                        String newName = line.split(" ")[0];
+                        this.changeName(newName);
+                        break;
+                    case "/broadcast":
+                        this.broadcast(line);
+                        break;
+                    case "/whisper":
+                        String destName = line.split(" ")[0];
+                        line = line.replaceFirst(destName, "");
+                        this.whisper(destName, line);
+                        break;
+                    case "/quit":
+                        break mainWhile;
                 }
             }
         } catch (IOException e) {
@@ -82,7 +93,12 @@ public class Client implements Runnable {
         }
     }
 
-    public void list(){
+    public void changeName(String newName) {
+        this.broadcast("Changed name to " + newName);
+        this.name = newName;
+    }
+
+    public void list() {
         this.out.println("Available commands:");
         this.out.println("/broadcast <message> - Sends the message to everyone.");
         this.out.println("/whisper <destination> <message> - Sends the message only to destination user.");
