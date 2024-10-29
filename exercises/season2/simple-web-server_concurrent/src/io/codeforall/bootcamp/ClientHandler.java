@@ -69,7 +69,7 @@ public class ClientHandler implements Runnable {
         } else {
             logger.log(Level.WARNING, file.getPath() + " not found");
             reply(out, HttpHelper.notFound());
-            filePath = WebServer.DOCUMENT_ROOT + "404.html";
+            filePath = WebServerConcurrent.DOCUMENT_ROOT + "404.html";
             file = new File(filePath);
         }
 
@@ -95,7 +95,7 @@ public class ClientHandler implements Runnable {
             filePath += "/index.html";
         }
 
-        return WebServer.DOCUMENT_ROOT + filePath;
+        return WebServerConcurrent.DOCUMENT_ROOT + filePath;
     }
 
     private void reply(DataOutputStream out, String response) throws IOException {
