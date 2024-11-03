@@ -1,0 +1,30 @@
+<?xml version="1.0" ?>
+<project name="SniperElite" default="jarfile">
+    <target name="init" description="Variables">
+        <property name="project.name" value="SniperElite"/>
+        <property name="source.dir" value="src"/>
+        <property name="build.dir" value="build"/>
+        <property name="classes.dir" value="${build.dir}/classes" />
+        <property name="main.class" value="io.codeforall.fanstatics.Main" />
+    </target>
+
+    <target name="clean" description="Cleans the build" depends="init">
+        <delete dir="${build.dir}" />
+    </target>
+
+    <target name="prepare" description="Create build and classes directories" depends="init">
+        <mkdir dir="${classes.dir}" />
+    </target>
+
+    <target name="compile" description="Compile the project" depends="prepare" >
+        <javac srcdir="${source.dir}" destdir="${classes.dir}"/>
+    </target>
+
+    <target name="jarfile" description="Create jarfile" depends="compile">
+        <jar destfile="${build.dir}/${project.name}" basedir="${classes.dir}">
+            <manifest>
+                <attribute name="Main-Class" value="${main.class}"/>
+            </manifest>
+        </jar>
+    </target>
+</project>
