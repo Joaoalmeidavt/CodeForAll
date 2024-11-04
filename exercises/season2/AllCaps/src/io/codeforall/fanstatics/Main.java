@@ -1,6 +1,5 @@
 package io.codeforall.fanstatics;
 
-import java.sql.SQLOutput;
 import java.util.stream.Stream;
 
 public class Main {
