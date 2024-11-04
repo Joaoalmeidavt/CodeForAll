@@ -1,4 +1,7 @@
 package io.codeforall.fanstatics.ability;
 
-public class Ability {
+import io.codeforall.fanstatics.hero.Hero;
+
+public interface Ability {
+    public void use(Hero target);
 }

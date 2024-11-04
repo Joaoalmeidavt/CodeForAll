@@ -1,4 +1,5 @@
 package io.codeforall.fanstatics.ability;
 
-public class Heal {
+public class Heal extends AbstractAbility{
+
 }

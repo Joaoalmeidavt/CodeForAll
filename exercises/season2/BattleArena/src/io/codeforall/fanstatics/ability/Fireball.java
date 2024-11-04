@@ -1,4 +1,4 @@
 package io.codeforall.fanstatics.ability;
 
-public class Fireball {
+public class Fireball extends AbstractAbility{
 }
