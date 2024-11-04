@@ -8,7 +8,7 @@ public class Main {
                 "I hope that someone garbage gets my message in a garbage bottle.";
 
         System.out.println(Stream.of(message.split(" "))
-                .filter(word -> !word.equals("garbage"))
+                .filter(word -> !word.equalsIgnoreCase("garbage"))
                 .map(String::toUpperCase)
                 .reduce("", (s1, s2) -> s1 + " " + s2)
                 .trim());
