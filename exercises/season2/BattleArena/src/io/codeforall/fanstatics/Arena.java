@@ -22,8 +22,14 @@ public class Arena {
         Stream.of(this.players).forEach(System.out::println);
         for (int i = 0; i < rounds; i++) {
             List<Hero> playerOrder = this.turnManager.newRound();
-            for (Hero hero : playerOrder) {
-                System.out.println(hero);
+            for (int j = 0; j < playerOrder.size(); j++) {
+                Hero attacker = playerOrder.get(j);
+                int k = j;
+                while (k == j) {
+                    k = (int) (Math.random() * playerOrder.size());
+                }
+                Hero victim = playerOrder.get(k);
+                System.out.println(attacker + " against " + victim);
             }
         }
     }

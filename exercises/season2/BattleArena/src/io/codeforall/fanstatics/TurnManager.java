@@ -15,7 +15,7 @@ public class TurnManager {
 
     public List<Hero> newRound() {
         this.round++;
-        System.out.println("&%$#&%$# Round " + this.round + " #$%&#$%&");
+        System.out.println("\n&%$#&%$# Round " + this.round + " #$%&#$%&");
         for (int k = 0; k < this.players.size() * 10; k++) {
             int i = (int) (Math.random() * this.players.size());
             int j = (int) (Math.random() * this.players.size());
