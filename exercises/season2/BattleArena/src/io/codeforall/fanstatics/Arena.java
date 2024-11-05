@@ -42,19 +42,23 @@ public class Arena {
                     case "Cleric":
                     case "Warrior":
                         if (attacker.getAbility().getCooldown() == 0) {
-                            System.out.println(attacker + " has used " + attacker.getAbility().getName());
                             attacker.getAbility().use(attacker, attacker);
+                            System.out.println(attacker + " has used " + attacker.getAbility().getName());
                             break;
                         }
                         attacker.giveDamage(victim);
+                        System.out.println(attacker + " has given damage to " + victim);
                         break;
                     default:
                         if (attacker.getAbility().getCooldown() == 0) {
-                            System.out.println(attacker + " has used " + attacker.getAbility().getName() + " against " + victim);
                             attacker.getAbility().use(attacker, victim);
+                            System.out.println(attacker +
+                                    " has used " + attacker.getAbility().getName() +
+                                    " against " + victim);
                             break;
                         }
                         attacker.giveDamage(victim);
+                        System.out.println(attacker + " has given damage to " + victim);
                         break;
                 }
             }

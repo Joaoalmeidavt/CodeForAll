@@ -11,5 +11,6 @@ public class ShieldBlock extends AbstractAbility{
     public void use(Hero source, Hero target) {
         source.setMana(source.getMana() - 20);
         target.setShield(20);
+        source.getAbility().setCooldown(5);
     }
 }

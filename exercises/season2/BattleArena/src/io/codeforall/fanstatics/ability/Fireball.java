@@ -22,5 +22,6 @@ public class Fireball extends AbstractAbility {
             return;
         }
         target.setHealth(target.getHealth() - 60);
+        source.getAbility().setCooldown(5);
     }
 }

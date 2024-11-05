@@ -11,5 +11,6 @@ public class SneakAttack extends AbstractAbility{
     public void use(Hero source, Hero target) {
         source.setMana(source.getMana() - 20);
         target.setHealth(target.getHealth() - 20);
+        source.getAbility().setCooldown(5);
     }
 }
