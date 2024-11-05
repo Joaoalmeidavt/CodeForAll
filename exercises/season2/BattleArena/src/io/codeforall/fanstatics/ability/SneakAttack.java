@@ -3,6 +3,10 @@ package io.codeforall.fanstatics.ability;
 import io.codeforall.fanstatics.hero.Hero;
 
 public class SneakAttack extends AbstractAbility{
+    public SneakAttack(String name) {
+        super(name);
+    }
+
     @Override
     public void use(Hero source, Hero target) {
         source.setMana(source.getMana() - 20);

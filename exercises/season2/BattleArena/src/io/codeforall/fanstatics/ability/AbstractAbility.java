@@ -2,9 +2,15 @@ package io.codeforall.fanstatics.ability;
 
 public abstract class AbstractAbility implements Ability {
     private int cooldown;
+    private String name;
 
-    public AbstractAbility(){
-        this.cooldown = 5;
+    public AbstractAbility(String name){
+        this.cooldown = 0;
+        this.name = name;
+    }
+
+    public String getName(){
+        return this.name;
     }
 
     public int getCooldown() {

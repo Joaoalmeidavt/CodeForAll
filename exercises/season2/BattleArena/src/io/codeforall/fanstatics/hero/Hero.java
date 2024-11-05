@@ -1,16 +1,20 @@
 package io.codeforall.fanstatics.hero;
 
 import io.codeforall.fanstatics.ability.Ability;
+import io.codeforall.fanstatics.ability.AbstractAbility;
 
 public abstract class Hero {
     private String name;
+    private String type;
     private int health = 200;
     private int mana = 500;
     private int attackDamage = 20;
+    private int shield;
 
-    private Ability ability;
+    private AbstractAbility ability;
 
-    public Hero(String name){
+    public Hero(String type, String name){
+        this.type = type;
         this.name = name;
     }
 
@@ -19,11 +23,15 @@ public abstract class Hero {
         return this.name;
     }
 
-    public Ability getAbility() {
+    public String getType(){
+        return this.type;
+    }
+
+    public AbstractAbility getAbility() {
         return ability;
     }
 
-    public void setAbility(Ability ability) {
+    public void setAbility(AbstractAbility ability) {
         this.ability = ability;
     }
 
@@ -43,7 +51,26 @@ public abstract class Hero {
         this.mana = mana;
     }
 
+    public int getShield(){
+        return this.shield;
+    }
+
+    public void setShield(int shield){
+        this.shield = shield;
+    }
+
     public int getAttackDamage() {
         return attackDamage;
+    }
+
+    public void giveDamage(Hero victim){
+        if(victim instanceof Warrior && ((Warrior) victim).shieldOn){
+            if(victim.getShield() > 10){
+                victim.setShield(victim.getShield() - 10);
+                return;
+            }
+            victim.setHealth(victim.getHealth() - (10 - victim.getShield()));
+            victim.setShield(0);
+        }
     }
 }
