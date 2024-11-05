@@ -11,6 +11,6 @@ public class Main {
                 new Mage("Gandalf"),
                 new Rogue("Deadpool"),
                 new Warrior("Wolverine"));
-        arena.start();
+        arena.start(3);
     }
 }
