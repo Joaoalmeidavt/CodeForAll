@@ -6,12 +6,12 @@ import io.codeforall.fanstatics.hero.Warrior;
 public class Fireball extends AbstractAbility {
 
     public Fireball(String name) {
-        super(name);
+        super(name, 20);
     }
 
     @Override
     public void use(Hero source, Hero target) {
-        source.setMana(source.getMana() - 20);
+        source.setMana(source.getMana() - super.getManaCost());
         if (target instanceof Warrior && ((Warrior) target).shieldOn) {
             if (target.getShield() > 20) {
                 target.setShield(target.getShield() - 20);

@@ -23,7 +23,10 @@ public class Arena {
         for (int i = 0; i < rounds; i++) {
 
             List<Hero> playerOrder = this.turnManager.newRound();
-
+            if(playerOrder.size() == 1){
+                System.out.println("\n" + playerOrder.get(0) + " is the winner!");
+                return;
+            }
             Hero attacker = null;
             Hero victim = null;
 
@@ -41,7 +44,8 @@ public class Arena {
                 switch (attacker.getType()) {
                     case "Cleric":
                     case "Warrior":
-                        if (attacker.getAbility().getCooldown() == 0) {
+                        if (attacker.getAbility().getCooldown() == 0 &&
+                                attacker.getMana() >= attacker.getAbility().getManaCost()) {
                             attacker.getAbility().use(attacker, attacker);
                             System.out.println(attacker + " has used " + attacker.getAbility().getName());
                             break;
@@ -50,7 +54,8 @@ public class Arena {
                         System.out.println(attacker + " has given damage to " + victim);
                         break;
                     default:
-                        if (attacker.getAbility().getCooldown() == 0) {
+                        if (attacker.getAbility().getCooldown() == 0 &&
+                                attacker.getMana() >= attacker.getAbility().getManaCost()) {
                             attacker.getAbility().use(attacker, victim);
                             System.out.println(attacker +
                                     " has used " + attacker.getAbility().getName() +

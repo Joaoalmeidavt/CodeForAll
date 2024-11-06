@@ -15,6 +15,10 @@ public class TurnManager {
 
     public List<Hero> newRound() {
         this.round++;
+        if(this.players.size() == 1){
+            System.out.println(this.players.get(0) + " is the winner!");
+            return null;
+        }
         System.out.println("\n&%$#&%$# Round " + this.round + " #$%&#$%&");
         for (int k = 0; k < this.players.size() * 10; k++) {
             int i = (int) (Math.random() * this.players.size());
@@ -23,6 +27,15 @@ public class TurnManager {
             this.players.set(i, this.players.get(j));
             this.players.set(j, temp);
         }
+        for (Hero player : this.players) {
+           if(round % 3 == 0){
+               player.getAbility().setCooldown(0);
+           }
+           if(player.getHealth() <= 0){
+               System.out.println(player + " has died :c");
+           }
+        }
+        this.players.removeIf(player -> player.getHealth() <= 0);
         return this.players;
     }
 }

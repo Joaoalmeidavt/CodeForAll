@@ -13,6 +13,6 @@ public class Main {
                 new Rogue("Deadpool"),
                 new Warrior("Wolverine")
         );
-        arena.start(5);
+        arena.start(200);
     }
 }
