@@ -1,0 +1,28 @@
+CREATE DATABASE boat_booking;
+
+USE boat_booking;
+
+CREATE TABLE sailors
+(
+id INTEGER PRIMARY KEY,
+name VARCHAR(15) NOT NULL,
+age INTEGER NOT NULL
+);
+
+CREATE TABLE boats
+(
+id INTEGER PRIMARY KEY,
+name VARCHAR(15) NOT NULL,
+color VARCHAR(10) NOT NULL
+);
+
+CREATE TABLE reservation
+(
+sailor_id INTEGER NOT NULL,
+boat_id INTEGER NOT NULL,
+
+FOREIGN KEY (sailor_id) REFERENCES sailors(id) ON DELETE CASCADE,
+FOREIGN KEY (boat_id) REFERENCES boats(id) ON DELETE CASCADE
+);
+
+
