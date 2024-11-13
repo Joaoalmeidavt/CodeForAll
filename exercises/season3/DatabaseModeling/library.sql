@@ -21,10 +21,11 @@ CREATE TABLE users
 
 CREATE TABLE reservations
 (
-    isbn BIGINT PRIMARY KEY,
+    isbn BIGINT,
     user_id INTEGER AUTO_INCREMENT,
     loan BOOLEAN DEFAULT FALSE,
 
+    PRIMARY KEY (isbn)
     FOREIGN KEY (isbn) REFERENCES books(isbn),
     FOREIGN KEY (user_id) REFERENCES users(user_id)
 );
@@ -46,4 +47,28 @@ INSERT INTO reservations(isbn, user_id, loan) VALUES (9789725614730, 1, TRUE);
 INSERT INTO reservations(isbn, user_id, loan) VALUES (9789720005953, 2, TRUE);
 INSERT INTO reservations(isbn, user_id, loan) VALUES (9789896379766, 3, TRUE);
 INSERT INTO reservations(isbn, user_id, loan) VALUES (9789722327220, 4, TRUE);
+
+
+
+
+
+
+
+
+
+
+
+-- answers
+
+-- Do we have any books by Tolstoi?
+SELECT COUNT(*) FROM books WHERE author = "Lev Tolstói";
+
+-- How many books are out on loan?
+SELECT COUNT(*) FROM reservations WHERE loan = TRUE;
+
+-- Which company published "Crime e Castigo"?
+SELECT publisher FROM books WHERE title = "Crime e Castigo";
+
+-- Which users have borrows books published before 1974;
+SELECT user_name FROM users u JOIN reservations r JOIN books b WHERE b.published_year < 1974;
 
