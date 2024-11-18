@@ -16,9 +16,13 @@ public class Sandbox {
         // entity manager from the entity manager factory
         EntityManager em = emf.createEntityManager();
 
+        Bootcamp bootcamp = new Bootcamp();
+        bootcamp.setBootcamp_name("102_fanSTATICs");
+
         Cadet cadet = new Cadet();
         cadet.setName("Leonardo");
         cadet.setAge(25);
+        cadet.setBootcamp(bootcamp);
 
         em.getTransaction().begin();
         em.persist(cadet);
