@@ -1,4 +1,4 @@
-package TablePerClass;
+package tablePerClass;
 
 import javax.persistence.*;
 
