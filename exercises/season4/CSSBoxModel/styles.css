@@ -1,0 +1,38 @@
+.box {
+    background-color: coral;
+    height: 200px;
+    width: 400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.first-inner-box {
+    background-color: black;
+    height: 180px;
+    width: 360px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.second-inner-box {
+    background-color: green;
+    height: 170px;
+    width: 350px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.third-inner-box {
+    background-color: white;
+    height: 40px;
+    width: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
