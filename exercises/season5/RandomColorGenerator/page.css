@@ -5,7 +5,7 @@
 .main {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
-    height: 100vh; /* Ensure columns span full viewport height */
+    height: 70vh; /* Ensure columns span full viewport height */
 }
 
 span {
@@ -13,4 +13,14 @@ span {
     flex-direction: column;
     justify-content: flex-end;
     align-items: center;
+}
+
+button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.main2 {
+    display: grid;
 }
