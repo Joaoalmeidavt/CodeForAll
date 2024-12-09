@@ -1,3 +1,4 @@
+// Filter
 function filter(arr, callback){
 
     result = [];
@@ -14,6 +15,7 @@ function filter(arr, callback){
 console.log(filter([1, 2, 3, 4, 5], (n) => n % 2 == 0));
 
 
+// Map
 function map(arr, callback){
 
     result = [];
@@ -27,6 +29,7 @@ function map(arr, callback){
 
 console.log(map([1, 2, 3, 4, 5], (n) => n * 2));
 
+// Reduce
 function reduce(arr, callback, initialValue){
 
     for(let i = 0; i < arr.length; i++){
