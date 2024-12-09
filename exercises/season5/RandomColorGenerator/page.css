@@ -7,3 +7,10 @@
     grid-template-columns: repeat(5, 1fr);
     height: 100vh; /* Ensure columns span full viewport height */
 }
+
+span {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+}

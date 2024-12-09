@@ -9,5 +9,9 @@ function getRandomColor() {
 
 for (let i = 1; i <= 5; i++) {
     const col = document.getElementById(`col${i}`);
-    col.style.backgroundColor = getRandomColor();
+    const color = getRandomColor();
+    col.style.backgroundColor = color;
+    
+    const text = document.getElementById(`text${i}`);
+    text.textContent = color; // Display the color code as text
 }
