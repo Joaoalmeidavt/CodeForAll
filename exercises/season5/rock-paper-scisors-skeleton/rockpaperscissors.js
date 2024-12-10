@@ -57,6 +57,7 @@ function handleClick(event){
     document.getElementById("right-text").textContent = `Score : ${player2Score}`;
 }
 
-
-const button = document.querySelector(".button-container button");
-button.addEventListener("click", handleClick);
+window.addEventListener("load", () => {
+    const button = document.querySelector(".button-container button");
+    button.addEventListener("click", handleClick);
+})
