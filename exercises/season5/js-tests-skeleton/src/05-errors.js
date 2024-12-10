@@ -3,6 +3,11 @@
  * If an exception is thrown, return the enclosed error message
  */
 exports.callIt = function(fn) {
+    try {
+        return fn();
+    } catch (e) {
+        return e.message;
+    }
 };
 
 /**
@@ -10,6 +15,10 @@ exports.callIt = function(fn) {
  * throw an error with an enclosed message otherwise
  */
 exports.assertEqual = function(a, b) {
+    if (a !== b) {
+        throw new Error(a + " is not equal to " + b);
+    }
+    return true;
 };
 
 /**
@@ -17,4 +26,8 @@ exports.assertEqual = function(a, b) {
  * indicating when the error occurred
  */
 exports.createCustomError = function() {
+    return function(message) {
+        this.message = message;
+        this.timestamp = new Date();
+    };
 };
