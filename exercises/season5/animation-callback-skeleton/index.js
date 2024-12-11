@@ -34,11 +34,14 @@ function move2({ target }) {
         halt = true;
       }
     }
+  } else {
+    console.log("batata");
+    clearInterval(si);
   }
 }
 
 function movement2(e) {
-  setInterval(() => move2(e), 5); // Fix to avoid immediate invocation
+  si = setInterval(() => move2(e), 5); // Fix to avoid immediate invocation
 }
 
 
