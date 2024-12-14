@@ -1,20 +1,33 @@
 function render(onClick) {
     const container = document.querySelector('#container');
-    const button = document.createElement('button');
+    const form = document.createElement('form');
     const div = document.createElement('div');
 
     div.className = `text-center`;
-    button.className = `btn btn-primary`;
-    button.type = `button`;
-    button.style = `margin-top: 10%; margin-bottom: 10%`;
+    form.className = `form`;
+    form.type = `form`;
+    form.style = `margin-top: 10%; margin-bottom: 10%`;
 
-    div.appendChild(button);
+    form.innerHTML = `
+        <label for="latitude">Latitude:</label>
+        <input type="text" id="latitude" name="latitude" placeholder="Enter latitude" required>
+    
+        <label for="longitude">Longitude:</label>
+        <input type="text" id="longitude" name="longitude" placeholder="Enter longitude" required>
+    
+        <button type="submit">Submit</button>
+        `;
+
+
+    div.appendChild(form);
 
     container.innerHTML = ''; //removes the previous elements
-    button.innerText = `CLICK ME FOR RANDOM MOVIE`;
 
-    button.addEventListener('click', async e => {
+    form.addEventListener('submit', async e => {
         e.preventDefault();
+
+        const latitude = document.getElementById('latitude').value;
+        const longitude = document.getElementById('longitude').value;
 
         const {
             sunrise,
@@ -27,15 +40,16 @@ function render(onClick) {
             nautical_twilight_end,
             astronomical_twilight_begin,
             astronomical_twilight_end
-        } = await onClick(parseInt(Math.random() * 6));
+        } = await onClick(latitude, longitude);
 
         const elem = document.createElement('div');
         elem.className = `text-center`;
 
-        elem.innerHTML = `<h1>${sunrise}</h1>
-        <h3>${sunset}</h3>
-        <h3>${solar_noon}</h3>
-        <h3>${day_length}</h3>`;
+        elem.innerHTML = `
+            <h1>Sunrise: ${sunrise}</h1>
+            <h3>Sunset: ${sunset}</h3>
+            <h3>Day Length: ${day_length}</h3>
+        `;
 
         if (container.childElementCount > 1) {
             container.removeChild(container.lastChild);

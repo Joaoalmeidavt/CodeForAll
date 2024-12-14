@@ -1,5 +1,5 @@
 async function getTimes(lat, lng) {
-    const api_url = 'https://api.sunrise-sunset.org/json?lat=41.1621602&lng=-8.7043535';
+    const api_url = `https://api.sunrise-sunset.org/json?lat=${lat}&lng=${lng}`;
     try {
         const response = await fetch(api_url);
         if (!response.ok) {
