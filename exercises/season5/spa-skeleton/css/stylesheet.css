@@ -1,6 +1,14 @@
 body {
+    margin: 0; /* Removes default body margins */
+    height: 100vh; /* Sets body height to match the viewport height */
+    width: 100vw; /* Ensures the body width matches the viewport width */
     background-image: url('../assets/day-night.jpg');
-    background-size: cover; /* Makes the image cover the entire background */
+    background-size: 100% 100%; /* Stretches the image to fill the viewport */
     background-repeat: no-repeat; /* Prevents the image from repeating */
-    background-position: center; /* Centers the image */
+    background-position: center; /* Centers the image in the viewport */
+    overflow: hidden; /* Prevents scrollbars if content overflows */
+}
+
+h1 {
+    color: white;
 }

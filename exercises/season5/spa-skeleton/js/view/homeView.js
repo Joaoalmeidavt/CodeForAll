@@ -43,8 +43,8 @@ function render(onClick) {
 
         elem.innerHTML = `
             <h1>Sunrise: ${sunrise} <i class="fa-solid fa-sun"></i></h1>
-            <h3>Sunset: ${sunset} <i class="fa-solid fa-moon"></i></h3>
-            <h3>Day Length: ${day_length} <i class="fa-solid fa-clock"></i></h3>
+            <h1>Sunset: ${sunset} <i class="fa-solid fa-moon"></i></h1>
+            <h1>Day Length: ${day_length} <i class="fa-solid fa-clock"></i></h1>
         `;
 
         if (container.childElementCount > 1) {
