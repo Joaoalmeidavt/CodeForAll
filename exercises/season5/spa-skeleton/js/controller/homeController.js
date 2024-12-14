@@ -1,6 +1,6 @@
 import homeView from '../view/homeView.js';
-import filmService from '../service/filmService.js';
+import timeService from '../service/timeService.js';
 
 export function init() {
-    homeView.render(filmService.getFilm);
+    homeView.render(timeService.getTimes);
 }
