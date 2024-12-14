@@ -9,11 +9,8 @@ function render(onClick) {
     form.style = `margin-top: 10%; margin-bottom: 10%`;
 
     form.innerHTML = `
-        <label for="latitude">Latitude:</label>
-        <input type="text" id="latitude" name="latitude" placeholder="Enter latitude" required>
-    
-        <label for="longitude">Longitude:</label>
-        <input type="text" id="longitude" name="longitude" placeholder="Enter longitude" required>
+        <label for="location_name">Location: </label>
+        <input type="text" id="location_name" name="location_name" placeholder="Name" required>
     
         <button type="submit">Submit</button>
         `;
@@ -26,8 +23,7 @@ function render(onClick) {
     form.addEventListener('submit', async e => {
         e.preventDefault();
 
-        const latitude = document.getElementById('latitude').value;
-        const longitude = document.getElementById('longitude').value;
+        const location_name = document.getElementById('location_name').value;
 
         const {
             sunrise,
@@ -40,15 +36,15 @@ function render(onClick) {
             nautical_twilight_end,
             astronomical_twilight_begin,
             astronomical_twilight_end
-        } = await onClick(latitude, longitude);
+        } = await onClick(location_name);
 
         const elem = document.createElement('div');
         elem.className = `text-center`;
 
         elem.innerHTML = `
-            <h1>Sunrise: ${sunrise}</h1>
-            <h3>Sunset: ${sunset}</h3>
-            <h3>Day Length: ${day_length}</h3>
+            <h1>Sunrise: ${sunrise} <i class="fa-solid fa-sun"></i></h1>
+            <h3>Sunset: ${sunset} <i class="fa-solid fa-moon"></i></h3>
+            <h3>Day Length: ${day_length} <i class="fa-solid fa-clock"></i></h3>
         `;
 
         if (container.childElementCount > 1) {
