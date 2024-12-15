@@ -42,9 +42,15 @@ function render(onClick) {
         elem.className = `text-center`;
 
         elem.innerHTML = `
-            <h1>Sunrise: ${sunrise} <i class="fa-solid fa-sun"></i></h1>
-            <h1>Sunset: ${sunset} <i class="fa-solid fa-moon"></i></h1>
-            <h1>Day Length: ${day_length} <i class="fa-solid fa-clock"></i></h1>
+            <table class="content">
+                <tbody>
+                    <tr>
+                        <td scopw="col">Sunrise: ${sunrise} <i class="fa-solid fa-sun"></i></td>
+                        <td scopw="col">Sunset: ${sunset} <i class="fa-solid fa-moon"></i></td>
+                        <td scopw="col">Day Length: ${day_length} <i class="fa-solid fa-clock"></i></td>
+                    </tr>
+                </tbody>
+            </table>
         `;
 
         if (container.childElementCount > 1) {

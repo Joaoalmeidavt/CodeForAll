@@ -1,14 +1,37 @@
+/* Apply gradient background */
 body {
-    margin: 0; /* Removes default body margins */
-    height: 100vh; /* Sets body height to match the viewport height */
-    width: 100vw; /* Ensures the body width matches the viewport width */
-    background-image: url('../assets/day-night.jpg');
-    background-size: 100% 100%; /* Stretches the image to fill the viewport */
-    background-repeat: no-repeat; /* Prevents the image from repeating */
-    background-position: center; /* Centers the image in the viewport */
-    overflow: hidden; /* Prevents scrollbars if content overflows */
+    margin: 0;
+    font-family: Arial, sans-serif;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(to bottom, #FFDD93, #FF9A76, #1E81B0);
+    background-attachment: fixed;
+    color: #fff;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+/* Content styling */
+.content {
+  text-align: center;
+  padding: 10px 20px;
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: 15px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  justify-content: space-between;
+}
+
+.content td {
+    padding: 15px 25px;
 }
 
 h1 {
-    color: white;
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+p {
+  font-size: 1.25rem;
+  margin: 0.5rem 0;
 }
