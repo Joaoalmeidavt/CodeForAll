@@ -42,6 +42,7 @@ function render(onClick) {
         elem.className = `text-center`;
 
         elem.innerHTML = `
+            <h1 class="title">Dawn to Dusk: ${location_name}</h1>
             <table class="content">
                 <tbody>
                     <tr>
