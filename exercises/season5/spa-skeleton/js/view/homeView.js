@@ -28,14 +28,9 @@ function render(onClick) {
         const {
             sunrise,
             sunset,
-            solar_noon,
             day_length,
-            civil_twilight_begin,
-            civil_twilight_end,
-            nautical_twilight_begin,
-            nautical_twilight_end,
-            astronomical_twilight_begin,
-            astronomical_twilight_end
+            zone,
+            timeThere
         } = await onClick(location_name);
 
         const elem = document.createElement('div');
@@ -49,6 +44,8 @@ function render(onClick) {
                         <td scopw="col">Sunrise: ${sunrise} <i class="fa-solid fa-sun"></i></td>
                         <td scopw="col">Sunset: ${sunset} <i class="fa-solid fa-moon"></i></td>
                         <td scopw="col">Day Length: ${day_length} <i class="fa-solid fa-clock"></i></td>
+                        <td scopw="col">Timezone: ${zone} <i class="fa-solid fa-location-crosshairs"></i></td>
+                        <td scopw="col">Time: ${timeThere} <i class="fa-solid fa-clock"></i></td>
                     </tr>
                 </tbody>
             </table>
