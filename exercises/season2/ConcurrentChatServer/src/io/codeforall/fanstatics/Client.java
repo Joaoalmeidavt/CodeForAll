@@ -82,11 +82,15 @@ public class Client implements Runnable {
 
     public void whisper(String destName, String message) {
         for (Client client : this.clients) {
-            if (client.name.equals(destName)) {
-                client.out.println("(" + this.name + "):" + message);
+            if (client.name.equalsIgnoreCase(destName.trim())) {  // Case-insensitive check
+                client.out.println("(" + this.name + "): " + message);
+                return;
             }
         }
+        out.println("User " + destName + " not found.");
     }
+
+
 
     public void changeName(String newName) {
         this.broadcast(" Changed name to " + newName);
