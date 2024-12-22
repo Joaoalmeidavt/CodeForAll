@@ -1,0 +1,26 @@
+* {
+    margin: 0px;
+}
+
+.main {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    height: 70vh; /* Ensure columns span full viewport height */
+}
+
+span {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.main2 {
+    display: grid;
+}

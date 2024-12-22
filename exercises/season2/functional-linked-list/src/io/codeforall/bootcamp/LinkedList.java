@@ -132,13 +132,9 @@ public class LinkedList<T> implements Iterable<T> {
      */
     public <R> LinkedList<R> map(Function<T, R> mapper) {
         LinkedList<R> newLinkedList = new LinkedList<>();
-        Node iterator = this.head.next;
-
-        while(iterator != null){
-            newLinkedList.add(mapper.apply(iterator.data));
-            iterator = iterator.next;
+        for (T t : this) {
+            newLinkedList.add(mapper.apply(t));
         }
-
         return newLinkedList;
     }
 
@@ -150,15 +146,11 @@ public class LinkedList<T> implements Iterable<T> {
      */
     public LinkedList<T> filter(Predicate<T> predicate) {
         LinkedList<T> newLinkedList = new LinkedList<>();
-        Node iterator = this.head.next;
-
-        while(iterator != null){
-            if(predicate.test(iterator.data)){
-                newLinkedList.add(iterator.data);
+        for (T t : this) {
+            if(predicate.test(t)){
+                newLinkedList.add(t);
             }
-            iterator = iterator.next;
         }
-
         return newLinkedList;
     }
 
@@ -170,11 +162,8 @@ public class LinkedList<T> implements Iterable<T> {
      * @return value resultant from the reduction of the list by applying the reducer function
      */
     public T reduce(BinaryOperator<T> reducer, T accumulator) {
-        Node iterator = this.head.next;
-
-        while(iterator != null){
-            accumulator = reducer.apply(accumulator, iterator.data);
-            iterator = iterator.next;
+        for (T t : this) {
+            accumulator = reducer.apply(accumulator, t);
         }
 
         return accumulator;
@@ -187,13 +176,10 @@ public class LinkedList<T> implements Iterable<T> {
      * @return true if any element of list matches the predicate
      */
     public boolean anyMatch(Predicate<T> predicate) {
-        Node iterator = this.head.next;
-
-        while(iterator != null){
-            if(predicate.test(iterator.data)){
-                return true;
-            }
-            iterator = iterator.next;
+        for (T t : this) {
+           if(predicate.test(t)){
+               return true;
+           }
         }
         return false;
     }
@@ -205,13 +191,10 @@ public class LinkedList<T> implements Iterable<T> {
      * @return true if all elements in list match
      */
     public boolean allMatch(Predicate<T> predicate) {
-        Node iterator = this.head.next;
-
-        while(iterator != null){
-            if(!predicate.test(iterator.data)){
+        for (T t : this) {
+            if(!predicate.test(t)){
                 return false;
             }
-            iterator = iterator.next;
         }
         return true;
     }

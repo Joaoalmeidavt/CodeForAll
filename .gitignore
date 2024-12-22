@@ -1,0 +1,14 @@
+/out
+*/out
+*/*/out
+*/*/*/out
+.idea
+*/.idea
+*/*/.idea
+*/*/*/.idea
+*.idea
+*.iml
+.DS_Store
+*/.DS_Store
+*/*/.DS_Store
+*/*/*/.DS_Store
